@@ -1,0 +1,83 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700&display=swap');
+
+body {
+    font-family: 'Sarabun', Arial, sans-serif;
+}
+header {
+    font-family: 'Sarabun', Arial, sans-serif;
+    background: linear-gradient(to bottom right, #020024 ,#090979, #055baf, #00d4ff);
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+footer {
+    background: linear-gradient(to top left, #020024 ,#090979, #055baf, #00d4ff);
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+
+
+#scrollToTop {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #007bff;
+    color: white;
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    /*display: none;*/
+    font-size: 25px;
+    line-height: 50px;
+    text-align: center;
+    display: flex;
+    align-items: center; /* Vertically center the content */
+    justify-content: center; /* Horizontally center the content */
+}
+
+.container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.card {
+    width: 300px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    padding: 20px;
+}
+.card img {
+    max-width: 100px;
+    height: auto;
+    display: block;
+    margin: 0 auto 20px;
+    border-radius: 5%;
+}
+.card h3 {
+    text-align: center;
+    color: #001020;
+    margin-bottom: 10px;
+}
+.card p {
+    margin-bottom: 5px;
+}
+
+/* Media query for iPhone */
+@media only screen and (max-width: 600px) {
+    .card {
+        width: calc(100% - 40px);
+    }
+    .card img {
+        max-width: 80px;
+    }
+}

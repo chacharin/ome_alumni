@@ -1,0 +1,49 @@
+body {
+    font-family: 'Sarabun', Arial, sans-serif;
+}
+header {
+    background: linear-gradient(to bottom right, #020024 ,#090979, #055baf, #00d4ff);
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+main {
+    padding: 20px;
+}
+footer {
+    background: linear-gradient(to top left, #020024 ,#090979, #055baf, #00d4ff);
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+
+
+
+
+/* Responsive Design */
+@media (max-width: 700px) {
+    header {
+        padding: 10px;
+    }
+    main {
+        padding: 10px;
+    }
+    footer {
+        padding: 5px;
+    }
+}
+
+/* For iPhone SE and similar small devices */
+@media (max-width: 320px) {
+    /* Styles for small screens */
+}
+
+/* For most iPhones */
+@media (max-width: 375px) {
+    /* Styles for standard iPhones */
+}
+
+/* For larger iPhones */
+@media (max-width: 414px) {
+    /* Styles for larger iPhones */
+}

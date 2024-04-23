@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="scoll_button.js"></script>
+    <link rel="stylesheet" href="sub-style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COC-4</title>
+    <style>
+        #loading {
+            display: none; /* Initially hide loading text */
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div >
+            <a href = "index.html"> <img src="https://drive.google.com/thumbnail?id=1biw0LeK_X0ntKPdH4-8XaPUcl1yGDl59" width="110px"> </a>
+            <h3>หลักสูตรนายทหารสัญญาบัตรใหม่</h3>
+            <h3>บก.ทท. รุ่นที่ 4</h3>
+            <p>สำนักการศึกษาทหาร สถาบันวิชาการป้องกันประเทศ</p>
+        </div>
+    </header>
+
+    <div id="loading"><h4>กรุณารอสักครู่ ระบบกำลังเชื่อมต่อฐานข้อมูล ...</h4></div> <!-- Loading indicator -->
+
+    <div class="container" id="cardContainer">
+        <!-- Cards will be inserted here dynamically -->
+    </div>
+
+    <!-- Scroll to top button -->
+    <button id="scrollToTop" onclick="scrollToTop()">↑</button>
+
+
+    <script>
+    function formatPhoneNumber(phoneNumber) {
+        // Remove non-numeric characters from phone number
+        const numericPhoneNumber = phoneNumber.replace(/\D/g, '');
+        // Return formatted phone number with tel: protocol
+        return `<a href="tel:${numericPhoneNumber}">${phoneNumber}</a>`;
+    }
+    </script>
+
+    <script>
+        // Function to fetch data from Google Apps Script API
+        function fetchData() {
+            // Show loading text
+            document.getElementById('loading').style.display = 'block';
+            
+            fetch('https://script.google.com/macros/s/AKfycbxCFsQeDWZKrg-BMB0n_aVLLz67t0uC8V3VtdarGuGBs_RddzMuNepdJ025REroyM85iw/exec')
+            .then(response => response.json())
+            .then(data => {
+                const cardContainer = document.getElementById('cardContainer');
+                cardContainer.innerHTML = ''; // Clear previous data
+
+                data.forEach(person => {
+                    const card = document.createElement('div');
+                    card.classList.add('card');
+                    card.innerHTML = `
+                        <img src="${person['รูปถ่าย']}" alt="Photo">
+                        <h3>${person['ยศ']} ${person['ชื่อ']} ${person['สกุล']}</h3>
+                        <p><strong>Nickname:</strong> ${person['ชื่อเล่น']}</p>
+                        <p><strong>Phone:</strong> ${formatPhoneNumber(person['โทรศัพท์'])}</p>
+                        <p><strong>Email:</strong> ${person['email']}</p>
+                        <p><strong>Line ID:</strong> ${person['LineID']}</p>`;
+                    cardContainer.appendChild(card);
+                });
+
+                // Hide loading text after data is loaded
+                document.getElementById('loading').style.display = 'none';
+            })
+            .catch(error => console.error('Error fetching data:', error));
+        }
+
+        // Call fetchData function when the page loads
+        window.onload = fetchData;
+    </script>
+
+</body>
+</html>
